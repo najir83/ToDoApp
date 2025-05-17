@@ -134,7 +134,7 @@ function App() {
             />
             <button
               onClick={handleAdd}
-              className="absolute bg-gray-700 hover:bg-black text-white w-20 hover:font-bold right-0  h-full rounded-2xl"
+              className="absolute cursor-pointer bg-gray-700 hover:bg-black text-white w-20 hover:font-bold right-0  h-full rounded-2xl"
             >
               Add
             </button>
@@ -175,7 +175,7 @@ function App() {
                               onClick={() => handleEdit(index)}
                               className={` ${
                                 e.done ? "opacity-0" : ""
-                              } bg-gray-700 hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8  rounded-2xl`}
+                              } cursor-pointer bg-gray-700 hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8  rounded-2xl`}
                             >
                               Edit
                             </button>
@@ -184,13 +184,13 @@ function App() {
                               onClick={() => handleComplete(index)}
                               className={` ${
                                 e.done ? "opacity-0" : ""
-                              } bg-gray-700 hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8  rounded-2xl`}
+                              } cursor-pointer bg-gray-700 hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8  rounded-2xl`}
                             >
                               Done
                             </button>
                             <button
                               onClick={() => handleDelete(index)}
-                              className={`${e.done ? 'bg-amber-900' :'bg-gray-700'} hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8 rounded-2xl`}
+                              className={`${e.done ? 'bg-amber-900' :'bg-gray-700'} cursor-pointer hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8 rounded-2xl`}
                             >
                               Delete
                             </button> 
