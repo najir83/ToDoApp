@@ -27,6 +27,28 @@ function App() {
       transition: Bounce,
     });
   };
+  const toggleDone = (index) => {
+    setArr((prev) =>
+      prev.map((todo, i) =>
+        i === index ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  };
+  const handleComplete = (index) => {
+    localStorage.setItem(
+      "item",
+      JSON.stringify(
+        todoArr.map((e, i) => {
+          return i == index ? { ...e, done: !e.done } : e;
+        })
+      )
+    );
+    setArr((pre) =>
+      pre.map((todo, i) => (i == index ? { ...todo, done: !todo.done } : todo))
+    );
+
+    // toggleDone(index);
+  };
 
   useEffect(() => {
     let item = localStorage.getItem("item");
@@ -42,13 +64,14 @@ function App() {
     newArr.splice(i, 1);
     setArr(newArr);
     localStorage.setItem("item", JSON.stringify(newArr));
-    setTodo(p);
+    setTodo(p.task);
     inputRef.current?.focus();
   };
   const handleAdd = () => {
     if (todo.length > 3) {
-      setArr([...todoArr, todo]);
-      localStorage.setItem("item", JSON.stringify([...todoArr, todo]));
+      const newTodo = { task: todo, done: false };
+      setArr((prev) => [...prev, newTodo]);
+      localStorage.setItem("item", JSON.stringify([...todoArr, newTodo]));
       setTodo(() => "");
       toast.success("Task Added..", {
         position: "top-right",
@@ -58,7 +81,7 @@ function App() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
         transition: Bounce,
       });
     } else {
@@ -70,7 +93,7 @@ function App() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
         transition: Bounce,
       });
     }
@@ -95,12 +118,13 @@ function App() {
         transition={Bounce}
       />
       <div className=" container mx-auto">
-        <div className="bg-violet-100 rounded-2xl h-[80vh] p-4 flex flex-col items-center">
+        <div className="bg-violet-100 rounded-2xl h-[80vh] p-2 lg:p-4 flex flex-col items-center">
           <h1 className="text-center font-bold text-2xl">
             iTask - Your Task Planner
           </h1>
-          <div className="todo-add mt-10 mb-10 relative flex flex-row w-[30vw] items-center">
-            <input spellCheck={false}
+          <div className="todo-add mt-10 lg:mt-10 mb-10 relative flex flex-row w-[90vw] lg:w-[30vw] items-center">
+            <input
+              spellCheck={false}
               ref={inputRef}
               value={todo}
               onChange={handleChange}
@@ -115,18 +139,18 @@ function App() {
               Add
             </button>
           </div>
-          <h2 className="font-bold">Your Todos</h2>
+          <h2 className="font-bold text-xl lg:text-lg ">Your Todos</h2>
           <div>
             {todoArr.length == 0 && <div>There is No todos</div>}
             {todoArr.length != 0 && (
-              <div className="relative overflow-x-auto w-[30vw]">
+              <div className="relative overflow-x-auto w-[90vw]  lg:w-[35vw]">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
-                  <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                  <thead className="text-xs text-gray-200 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                      <th scope="col" className="px-6 py-3 w-2/3 rounded-s-lg">
+                      <th scope="col" className="px-2 lg:px-6 lg:py-3 w-2/3  rounded-s-lg">
                         Task ( {todoArr.length} )
                       </th>
-                      <th scope="col" className="px-6 py-3">
+                      <th scope="col" className="px-4 py-3 lg:px-6 lg:py-3">
                         Actions
                       </th>
                     </tr>
@@ -134,23 +158,42 @@ function App() {
                   <tbody>
                     {todoArr.map((e, index) => {
                       return (
-                        <tr className="text-black bg-yellow-100">
-                          <td className="p-4 text-lg">
-                            {index + 1}. {e}
+                        <tr
+                          className="text-black bg-yellow-100 hover:bg-green-200"
+                          key={index}
+                        >
+                          <td
+                            className={`text-md p-4 lg:text-lg ${
+                              e.done ? "line-through" : ""
+                            } `}
+                          >
+                            {index + 1}. {e.task}
                           </td>
                           <td className="flex justify-center items-center gap-4 p-4">
-                            <button
+                             <button
+                              disabled={e.done}
                               onClick={() => handleEdit(index)}
-                              className=" bg-gray-700 hover:bg-black text-white w-20 hover:font-bold h-8  rounded-2xl"
+                              className={` ${
+                                e.done ? "opacity-0" : ""
+                              } bg-gray-700 hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8  rounded-2xl`}
                             >
                               Edit
                             </button>
                             <button
+                              disabled={e.done}
+                              onClick={() => handleComplete(index)}
+                              className={` ${
+                                e.done ? "opacity-0" : ""
+                              } bg-gray-700 hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8  rounded-2xl`}
+                            >
+                              Done
+                            </button>
+                            <button
                               onClick={() => handleDelete(index)}
-                              className=" bg-gray-700 hover:bg-black text-white w-20 hover:font-bold  h-8 rounded-2xl"
+                              className={`${e.done ? 'bg-amber-900' :'bg-gray-700'} hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8 rounded-2xl`}
                             >
                               Delete
-                            </button>
+                            </button> 
                           </td>
                         </tr>
                       );
