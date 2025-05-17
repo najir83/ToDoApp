@@ -147,7 +147,10 @@ function App() {
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
                   <thead className="text-xs text-gray-200 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                      <th scope="col" className="px-2 lg:px-6 lg:py-3 w-2/3  rounded-s-lg">
+                      <th
+                        scope="col"
+                        className="px-2 lg:px-6 lg:py-3 w-2/3  rounded-s-lg"
+                      >
                         Task ( {todoArr.length} )
                       </th>
                       <th scope="col" className="px-4 py-3 lg:px-6 lg:py-3">
@@ -170,7 +173,7 @@ function App() {
                             {index + 1}. {e.task}
                           </td>
                           <td className="flex justify-center items-center gap-4 p-4">
-                             <button
+                            <button
                               disabled={e.done}
                               onClick={() => handleEdit(index)}
                               className={` ${
@@ -190,10 +193,12 @@ function App() {
                             </button>
                             <button
                               onClick={() => handleDelete(index)}
-                              className={`${e.done ? 'bg-amber-900' :'bg-gray-700'} cursor-pointer hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8 rounded-2xl`}
+                              className={`${
+                                e.done ? "bg-amber-900" : "bg-gray-700"
+                              } cursor-pointer hover:bg-black text-white w-14 h-7 lg:w-20 hover:font-bold lg:h-8 rounded-2xl`}
                             >
                               Delete
-                            </button> 
+                            </button>
                           </td>
                         </tr>
                       );

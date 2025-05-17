@@ -1,5 +1,7 @@
 # 📝 iTask - Your Task Planner
 
+🔗 **Live Demo:** [https://to-do-app-opal-eta.vercel.app/]
+
 A simple and elegant task planner built with React. This app allows users to add, edit, complete, and delete their daily tasks. It uses **localStorage** to persist data across sessions and includes user-friendly toasts for notifications.
 
 ## 🚀 Features
@@ -14,7 +16,7 @@ A simple and elegant task planner built with React. This app allows users to add
 
 ## 📸 Screenshot
 
-![iTask UI Screenshot](screenshot.png) <!-- Add a screenshot file if needed -->
+![iTask UI Screenshot](Screenshot.png) <!-- Add a screenshot file if needed -->
 
 ## 🛠️ Tech Stack
 
@@ -22,6 +24,4 @@ A simple and elegant task planner built with React. This app allows users to add
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Toastify](https://fkhadra.github.io/react-toastify/)
-
-## 📂 Project Structure
 
