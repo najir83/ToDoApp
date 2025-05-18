@@ -1,27 +1,36 @@
-# 📝 iTask - Your Task Planner
+# 📝 BloggingApp
 
-🔗 **Live Demo:** [https://to-do-app-opal-eta.vercel.app/]
+🔗 **Live Demo:** [https://blogingapp-3h2j.onrender.com/](https://blogingapp-3h2j.onrender.com/)
 
-A simple and elegant task planner built with React. This app allows users to add, edit, complete, and delete their daily tasks. It uses **localStorage** to persist data across sessions and includes user-friendly toasts for notifications.
+**BloggingApp** is a dynamic and responsive blogging platform built with **Node.js**, **Express.js**, and **EJS** templating. It allows users to create and manage blog posts effortlessly. The app follows a clean and modular architecture, and features **OTP-based authentication** for secure user login and signup.
+
+---
 
 ## 🚀 Features
 
-- ✅ Add new tasks with a simple input field
-- ✏️ Edit existing tasks (unless marked completed)
-- ✔️ Mark tasks as complete
-- ❌ Delete individual tasks
-- 💾 Tasks are saved in localStorage
-- 🔔 Toast notifications using `react-toastify`
-- ⚡ Responsive design with Tailwind CSS
+- 🔐 **User Authentication** – Secure login and registration using OTP
+- ✍️ **Blog Functionality** – Create, read, and manage blog posts
+- 📱 **Responsive UI** – Built with Tailwind CSS for mobile-first design
+- 🗂️ **Modular Structure** – Clean, organized codebase for scalability
+- 🧩 **Middleware Support** – Custom middleware for logging, error handling, etc.
 
-## 📸 Screenshot
-
-![iTask UI Screenshot](Screenshot.png) <!-- Add a screenshot file if needed -->
+---
 
 ## 🛠️ Tech Stack
 
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [React Toastify](https://fkhadra.github.io/react-toastify/)
+- **Backend**: Node.js, Express.js , React.js
+- **Frontend**: EJS, Tailwind CSS
+- **Database**: MongoDB (via Mongoose)
+- **Templating Engine**: EJS
+- **Other Tools**: 
+  - `dotenv` – Manage environment variables
+ 
 
+---
+
+## 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/BloggingApp.git
+   cd BloggingApp
